@@ -1,0 +1,64 @@
+.form-wizard-list {
+    position: relative;
+    width: 100%;
+}
+
+/* EACH STEP ITEM */
+.form-wizard-list__item {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+}
+
+/* THE CIRCLE */
+.form-wizard-list__item .circle {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background-color: #d6d6d6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #333;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+/* CONNECTOR LINE BETWEEN CIRCLES */
+.connector-line {
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    width: 100%;
+    height: 3px;
+    background-color: #d6d6d6;
+    z-index: 1;
+}
+
+/* ACTIVE STEP (CURRENT) */
+.form-wizard-list__item.active .circle {
+    background-color: #0d6efd;
+    /* bootstrp primary */
+    color: white;
+    transform: scale(1);
+}
+
+/* ACTIVATED (COMPLETED) */
+.form-wizard-list__item.activated .circle {
+    background-color: #0d6efd;
+    /* bootstrap success */
+    color: white;
+}
+
+/* Activated line (completed line) */
+.form-wizard-list__item.activated .connector-line {
+    background-color: #0d6efd;
+}
+
+.form-wizard-list__item.active .connector-line {
+    background-color: #0d6efd;
+}

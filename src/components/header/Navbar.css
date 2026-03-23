@@ -1,0 +1,10 @@
+.header-top {
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.dropdown-menu {
+  min-width: 220px;
+  position: absolute !important;
+  right: 40 !important;
+}

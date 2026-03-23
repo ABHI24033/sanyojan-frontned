@@ -1,0 +1,45 @@
+/* Soft dark overlay with opacity */
+.custom-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 1040;
+    backdrop-filter: blur(2px);
+  }
+  
+  /* Ensure modal stays above backdrop */
+  .custom-modal {
+    z-index: 1050;
+  }
+  
+  /* Remove sharp borders and add smooth look */
+  .modal-content {
+    background: #ffffff;
+    border-radius: 16px !important;
+    border: none !important;
+  }
+  
+  /* Buttons */
+  .btn-light {
+    border: 1px solid #ddd;
+  }
+  
+  /* Smooth fade-in effect */
+  .custom-modal .modal-content {
+    animation: zoomIn 0.22s ease-out;
+  }
+  
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0.6;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  

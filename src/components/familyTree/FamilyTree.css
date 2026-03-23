@@ -1,0 +1,136 @@
+.family-tree-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.family-tree {
+  position: relative;
+  min-height: 500px;
+}
+
+.family-tree-node-wrapper {
+  position: relative;
+}
+
+.family-tree-node {
+  transition: all 0.2s ease;
+}
+
+.family-tree-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.family-tree-flow-node {
+  transition: all 0.2s ease;
+}
+
+.family-tree-flow-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.tree-level {
+  position: relative;
+}
+
+/* Connection lines styling */
+.tree-level::before,
+.tree-level::after {
+  content: '';
+  position: absolute;
+  background-color: #333;
+  z-index: 0;
+}
+
+/* Add options styling */
+.add-option-button {
+  transition: all 0.2s ease;
+}
+
+.add-option-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* React Flow customizations - matching reference design */
+.react-flow__node {
+  cursor: pointer;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+.react-flow__node:hover {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+}
+
+.react-flow__handle {
+  width: 1px;
+  height: 1px;
+  border: none;
+  background-color: transparent;
+  visibility: hidden;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2;
+  stroke: #374151;
+  transition: all 0.2s ease;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke-width: 3;
+  stroke: #1f2937;
+}
+
+/* Smooth step edges - ensure proper curve rendering */
+.react-flow__edge.smoothstep .react-flow__edge-path {
+  fill: none;
+}
+
+.react-flow__edge {
+  pointer-events: none;
+}
+
+/* Background styling */
+.react-flow__background {
+  background-color: #f8fafc;
+}
+
+.react-flow__background-pattern {
+  stroke: #e2e8f0;
+}
+
+.react-flow__controls {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.react-flow__controls-button {
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #fff;
+}
+
+.react-flow__controls-button:hover {
+  background-color: #f9fafb;
+}
+
+.react-flow__minimap {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.react-flow__attribution {
+  display: none;
+}
+
+.sticky-top {
+  z-index: 1020 !important;
+  position: sticky !important;
+  top: 75px !important;
+}
+
+.navbar-header {
+  z-index: 1030 !important;
+}
