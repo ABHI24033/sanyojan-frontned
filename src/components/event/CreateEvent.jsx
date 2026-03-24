@@ -621,7 +621,7 @@ export default function CreateEvent() {
 
                                     <div className="max-w-400 mx-auto">
                                         <div className="d-flex flex-wrap gap-2">
-                                            <button className="btn btn-primary flex-grow-1 py-3 fw-bold rounded-3" onClick={() => navigate("/events")}>
+                                            <button className="btn btn-primary flex-grow-1 py-3 fw-bold rounded-3" onClick={() => navigate("/invitations")}>
                                                 Go to My Events
                                             </button>
                                             <button className="btn btn-outline-primary flex-grow-1 py-3 fw-bold rounded-3" onClick={() => resetForm()}>

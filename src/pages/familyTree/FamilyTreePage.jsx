@@ -177,10 +177,13 @@ const FamilyTreePage = () => {
 
   const handleSaveNewMember = async (memberData) => {
     try {
-      await handleAddMember(memberData);
-      setShowAddMemberModal(false);
-      setTargetMemberForAdd(null);
-      setSelectedRelationship(null);
+      const response = await handleAddMember(memberData);
+      console.log("response", response);
+      if (response) {
+        setShowAddMemberModal(false);
+        setTargetMemberForAdd(null);
+        setSelectedRelationship(null);
+      }
     } catch (err) {
       // Error is handled in handleAddMember, but we might want to keep modal open?
       // handleAddMember re-throws, so we catch it here.

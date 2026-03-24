@@ -94,15 +94,12 @@ const FamilyTreeCard = ({ member, isSelected, onSelect, onAddMember, onEdit, onD
     };
 
     const handleAddMember = async (memberData) => {
-        const result = await onAddMember({
+        await onAddMember({
             ...memberData,
             targetUserId: member.userId
         });
-        console.log("familytree card ,", result);
-        if (result.success || result.status === 200) {
-            setModalOpen(false);
-            setSelectedRelationship(null);
-        }
+        setModalOpen(false);
+        setSelectedRelationship(null);
     };
 
     const handleCardClick = () => {

@@ -80,7 +80,7 @@ const SentInvitationsGuestListPage = () => {
                                                 <td>
                                                     <div className="d-flex align-items-center">
                                                         <img
-                                                            src={guest.avatar || '/assets/images/user.png'}
+                                                            src={guest.avatar || '/assets/images/avatar/user.png'}
                                                             className="w-40-px h-40-px rounded-circle object-fit-cover me-3"
                                                             alt=""
                                                         />

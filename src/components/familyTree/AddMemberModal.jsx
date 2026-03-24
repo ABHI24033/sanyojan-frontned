@@ -238,18 +238,14 @@ const AddMemberModal = ({ show, onClose, onAdd, targetUserId, relationship, targ
 
     try {
       // Pass the file along with other form data
-    const result = await onAdd({
+     await onAdd({
         targetUserId,
         relationship,
         ...formData,
         // Ensure dateOfDeath is not sent if empty string (though backend handles it, cleaner here)
         dateOfDeath: formData.dateOfDeath || undefined,
         file: selectedFile // Include the file if selected
-      });
-      console.log("Result",result);
-      
-
-      if (result.success || result.status === 200) {
+      });      
         // Reset form
       setFormData({
         firstname: "",
@@ -268,9 +264,8 @@ const AddMemberModal = ({ show, onClose, onAdd, targetUserId, relationship, targ
       setSelectedFile(null);
       setUploadProgress("");
       setTimeout(() => {
-        // onClose();
+        onClose();
       }, 1000);
-    }
     } catch (error) {
       console.error("Error adding member:", error);
       setErrors({ submit: error.message || "Failed to add family member" });
