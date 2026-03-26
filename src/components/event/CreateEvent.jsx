@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { QRCodeCanvas } from "qrcode.react";
@@ -7,6 +7,7 @@ import Input from "../common/Input";
 import TextArea from "../common/TextArea";
 import { useEvent } from "../../hooks/event/useEvent";
 import AlertBox from "../ui/Alert";
+import "./event.css";
 
 export default function CreateEvent() {
     const {
@@ -68,6 +69,7 @@ export default function CreateEvent() {
 
     const [showAddFriendModal, setShowAddFriendModal] = useState(false);
     const [activeTab, setActiveTab] = useState("family");
+    const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
     const navigate = useNavigate();
 
     // Compute today's date (local) in YYYY-MM-DD for date inputs
@@ -121,6 +123,31 @@ export default function CreateEvent() {
 
     const rsvpLink = createdEventId ? `${window.location.origin}/events/${createdEventId}?external=true` : "";
 
+    useEffect(() => {
+        if (!isPreviewModalOpen) {
+            return undefined;
+        }
+
+        const handleKeyDown = (event) => {
+            if (event.key === "Escape") {
+                setIsPreviewModalOpen(false);
+            }
+        };
+
+        const previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = previousOverflow;
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [isPreviewModalOpen]);
+
+    const openFilePicker = () => {
+        document.getElementById("coverInput")?.click();
+    };
+
     return (
         <div className="container py-2 py-md-5">
             <div className="d-flex flex-column flex-md-row justify-content-between align-items-center mb-5 gap-4">
@@ -165,12 +192,38 @@ export default function CreateEvent() {
                                                     Event Cover Photo
                                                 </label>
                                                 <div
-                                                    className="border rounded-4 overflow-hidden position-relative bg-light transition-all hover-shadow-sm"
-                                                    style={{ height: "240px", cursor: "pointer", borderStyle: "dashed !important" }}
-                                                    onClick={() => document.getElementById("coverInput").click()}
+                                                    className={`border rounded-4 overflow-hidden position-relative bg-light transition-all hover-shadow-sm event-cover-upload ${coverPreview ? "has-preview" : ""}`}
+                                                    style={{ height: "240px", borderStyle: "dashed" }}
+                                                    onClick={coverPreview ? undefined : openFilePicker}
                                                 >
                                                     {coverPreview ? (
-                                                        <img src={coverPreview} alt="cover" className="w-100 h-100 object-fit-cover" />
+                                                        <>
+                                                            <img src={coverPreview} alt="Selected event cover preview" className="w-100 h-100 object-fit-cover" />
+                                                            <div className="event-cover-upload__actions">
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-light btn-sm rounded-pill shadow-sm d-inline-flex align-items-center gap-2"
+                                                                    onClick={(event) => {
+                                                                        event.stopPropagation();
+                                                                        setIsPreviewModalOpen(true);
+                                                                    }}
+                                                                >
+                                                                    <Icon icon="mdi:magnify-plus-outline" />
+                                                                    Preview
+                                                                </button>
+                                                                <button
+                                                                    type="button"
+                                                                    className="btn btn-primary btn-sm rounded-pill shadow-sm d-inline-flex align-items-center gap-2"
+                                                                    onClick={(event) => {
+                                                                        event.stopPropagation();
+                                                                        openFilePicker();
+                                                                    }}
+                                                                >
+                                                                    <Icon icon="mdi:image-edit-outline" />
+                                                                    Change
+                                                                </button>
+                                                            </div>
+                                                        </>
                                                     ) : (
                                                         <div className="d-flex flex-column justify-content-center align-items-center h-100 p-4 text-center">
                                                             <Icon icon="solar:camera-add-linear" width={48} className="text-muted mb-3 opacity-50" />
@@ -179,6 +232,11 @@ export default function CreateEvent() {
                                                         </div>
                                                     )}
                                                 </div>
+                                                {coverPreview && (
+                                                    <p className="text-muted smaller mt-2 mb-0">
+                                                        Click Preview to open the selected image in a larger view.
+                                                    </p>
+                                                )}
                                                 <input type="file" id="coverInput" accept="image/*" onChange={handleCover} style={{ display: "none" }} />
                                             </div>
 
@@ -638,6 +696,35 @@ export default function CreateEvent() {
 
             <AlertBox alert={alert} setAlert={setAlert} />
             <AddFriendRelativeModal show={showAddFriendModal} onHide={() => setShowAddFriendModal(false)} />
+
+            {isPreviewModalOpen && coverPreview && (
+                <div
+                    className="event-image-preview-modal"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Selected event cover image preview"
+                    onClick={() => setIsPreviewModalOpen(false)}
+                >
+                    <div
+                        className="event-image-preview-modal__dialog"
+                        onClick={(event) => event.stopPropagation()}
+                    >
+                        <button
+                            type="button"
+                            className="event-image-preview-modal__close"
+                            aria-label="Close image preview"
+                            onClick={() => setIsPreviewModalOpen(false)}
+                        >
+                            <Icon icon="mdi:close" width="20" />
+                        </button>
+                        <img
+                            src={coverPreview}
+                            alt="Selected event cover enlarged preview"
+                            className="event-image-preview-modal__image"
+                        />
+                    </div>
+                </div>
+            )}
 
             <style dangerouslySetInnerHTML={{
                 __html: `

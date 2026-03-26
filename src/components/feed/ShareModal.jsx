@@ -181,17 +181,14 @@ export default function ShareModal({
                       {files?.map((file, index) => (
                         <div
                           key={index}
-                          className="position-relative rounded shadow-sm overflow-hidden"
-                          style={{ width: "120px", height: "120px" }}
+                          className="post-upload-preview position-relative rounded shadow-sm overflow-hidden"
                         >
                           {/* Image preview from cloudinary */}
                           {typeof file === "string" && (
                             <img
                               src={file}
                               alt="cloud-img"
-                              width="120"
-                              height="120"
-                              style={{ objectFit: "cover", borderRadius: "8px" }}
+                              className="post-upload-preview__image"
                             />
                           )}
                           {/* Image Preview */}
@@ -199,9 +196,7 @@ export default function ShareModal({
                             <img
                               src={URL.createObjectURL(file)}
                               alt="preview"
-                              width="120"
-                              height="120"
-                              style={{ objectFit: "fill" }}
+                              className="post-upload-preview__image"
                             />
                           )}
                           {/* Remove Button */}

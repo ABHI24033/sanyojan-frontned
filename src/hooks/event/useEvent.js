@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import { createEvent } from "../../api/event";
@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 export const useEvent = () => {
     const queryClient = useQueryClient();
     const navigate = useNavigate();
+    const coverPreviewUrlRef = useRef(null);
 
     const [activeBulkAction, setActiveBulkAction] = useState("with_family"); // [NEW]
 
@@ -134,10 +135,24 @@ export const useEvent = () => {
     const handleCover = (e) => {
         const file = e.target.files[0];
         if (file) {
-            setCoverPreview(URL.createObjectURL(file));
+            if (coverPreviewUrlRef.current) {
+                URL.revokeObjectURL(coverPreviewUrlRef.current);
+            }
+
+            const previewUrl = URL.createObjectURL(file);
+            coverPreviewUrlRef.current = previewUrl;
+            setCoverPreview(previewUrl);
             setCoverFile(file);
         }
     };
+
+    useEffect(() => {
+        return () => {
+            if (coverPreviewUrlRef.current) {
+                URL.revokeObjectURL(coverPreviewUrlRef.current);
+            }
+        };
+    }, []);
 
     const handleSelectSavedList = (e) => {
         const listId = e.target.value;
@@ -327,6 +342,11 @@ export const useEvent = () => {
 
     // ========== RESET FORM ==========
     const resetForm = () => {
+        if (coverPreviewUrlRef.current) {
+            URL.revokeObjectURL(coverPreviewUrlRef.current);
+            coverPreviewUrlRef.current = null;
+        }
+
         setCurrentStep(1);
         setCreatedEventId(null);
         setEventName("");
