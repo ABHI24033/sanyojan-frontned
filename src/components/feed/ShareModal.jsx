@@ -125,11 +125,12 @@ export default function ShareModal({
             {/* User Info */}
             <div className="d-flex align-items-center mb-3">
               <img
-                src={user?.profilePicture || "https://i.pravatar.cc/50"}
+                src={user?.profilePicture || "/assets/images/avatar/user.png"}
                 alt="user"
-                className="rounded-circle me-2"
+                className="rounded-circle me-2 bg-white object-fit-contain border"
                 width="45"
                 height="45"
+                style={{ objectFit: "contain" }}
               />
               <div>
                 <p className="mb-0 fw-semibold">

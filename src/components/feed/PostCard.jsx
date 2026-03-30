@@ -149,9 +149,10 @@ export default function PostCard({
                             <img
                                 src={post?.author?.profilePicture || "assets/images/avatar/user.png"}
                                 alt="profile"
-                                className="rounded-circle object-fit-cover"
+                                className="rounded-circle object-fit-contain bg-white"
                                 width="48"
                                 height="48"
+                                style={{ objectFit: "contain" }}
                             />
                         </Link>
                     </div>
@@ -200,12 +201,12 @@ export default function PostCard({
                                     <img
                                         src={images[0]}
                                         alt="post"
-                                        className="img-fluid"
+                                        className="img-fluid bg-white"
                                         style={{
                                             width: "100%",
                                             height: "auto",
                                             maxHeight: "700px",
-                                            objectFit: "cover",
+                                            objectFit: "contain",
                                             cursor: "pointer",
                                             display: "block"
                                         }}
@@ -223,8 +224,8 @@ export default function PostCard({
                                                 <img
                                                     src={img}
                                                     alt={`post-${i}`}
-                                                    className="img-fluid w-100 h-100"
-                                                    style={{ objectFit: "cover" }}
+                                                    className="img-fluid w-100 h-100 bg-white"
+                                                    style={{ objectFit: "contain" }}
                                                 />
                                             </div>
                                         </div>
@@ -239,8 +240,8 @@ export default function PostCard({
                                         <div className="bg-light rounded-start-2 d-flex align-items-center justify-content-center overflow-hidden border border-light" style={{ height: "400px" }}>
                                             <img
                                                 src={images[0]}
-                                                className="img-fluid w-100 h-100"
-                                                style={{ objectFit: "cover" }}
+                                                className="img-fluid w-100 h-100 bg-white"
+                                                style={{ objectFit: "contain" }}
                                             />
                                         </div>
                                     </div>
@@ -250,8 +251,8 @@ export default function PostCard({
                                                 <div className={`bg-light d-flex align-items-center justify-content-center overflow-hidden border border-light ${i === 0 ? "rounded-top-end-2" : "rounded-bottom-end-2"}`} style={{ height: "198px" }}>
                                                     <img
                                                         src={img}
-                                                        className="img-fluid w-100 h-100"
-                                                        style={{ objectFit: "cover" }}
+                                                        className="img-fluid w-100 h-100 bg-white"
+                                                        style={{ objectFit: "contain" }}
                                                     />
                                                 </div>
                                             </div>
@@ -273,8 +274,8 @@ export default function PostCard({
                                             <img
                                                 src={img}
                                                 alt={`post-${i}`}
-                                                className="img-fluid w-100 h-100"
-                                                style={{ objectFit: "cover" }}
+                                                className="img-fluid w-100 h-100 bg-white"
+                                                style={{ objectFit: "contain" }}
                                             />
                                             {i === 3 && remaining > 0 && (
                                                 <div className="overlay-more">
@@ -322,9 +323,10 @@ export default function PostCard({
                         <img
                             src={user?.profilePicture || "assets/images/avatar/user.png"}
                             alt="avatar"
-                            className="rounded-circle me-2 object-fit-cover border"
+                            className="rounded-circle me-2 object-fit-contain bg-white border"
                             width="32"
                             height="32"
+                            style={{ objectFit: "contain" }}
                         />
                         <div className="flex-grow-1 position-relative">
                             <input

@@ -515,7 +515,7 @@ const AddMemberModal = ({ show, onClose, onAdd, targetUserId, relationship, targ
                   <div className="row g-16">
                     <div className="col-md-6">
                       <label className="form-label fw-medium text-neutral-900 mb-8">
-                        Phone Number {!isLate && <span className="text-danger-600">*</span>}
+                        Whatsapp Number {!isLate && <span className="text-danger-600">*</span>}
                       </label>
                       <div className="position-relative">
                         <Icon icon="solar:phone-linear" className="position-absolute top-50 start-0 translate-middle-y ms-16 text-neutral-500 text-lg" />
