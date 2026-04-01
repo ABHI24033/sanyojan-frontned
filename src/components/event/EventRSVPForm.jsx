@@ -123,11 +123,6 @@ const EventRSVPForm = ({
             return;
         }
 
-        if (status !== "rejected" && !city.trim()) {
-            alert("Please provide your city");
-            return;
-        }
-
         const data = {
             status,
             totalAttendees: status === "rejected" ? 0 : total,
@@ -253,7 +248,7 @@ const EventRSVPForm = ({
             {status !== 'rejected' && (
                 <div className="text-start">
                     {/* City Field */}
-                    <div className="mb-4 position-relative">
+                    {/* <div className="mb-4 position-relative">
                         <label className="small fw-bold text-secondary mb-2 d-block">
                             <Icon icon="lucide:map-pin" className="me-1 text-primary" />
                             Traveling from
@@ -289,7 +284,7 @@ const EventRSVPForm = ({
                                 <span className="spinner-border spinner-border-sm text-muted" role="status"></span>
                             </div>
                         )}
-                    </div>
+                    </div> */}
 
                     <div className="mb-3">
                         <label className="small fw-bold text-dark mb-1 d-block">

@@ -230,7 +230,7 @@ const MasterLayout = ({ children }) => {
                         }
                       >
                         <i className='ri-circle-fill circle-icon text-success-main w-auto' />{" "}
-                        Reports
+                        Event Reports
                       </NavLink>
                     </li>
                     <li>

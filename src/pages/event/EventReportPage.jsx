@@ -151,7 +151,7 @@ const EventReportPage = () => {
                         </div>
                     </div>
                     <div className="d-flex gap-2">
-                        <button
+                        {/* <button
                             className="btn btn-primary d-flex align-items-center gap-2 radius-8"
                             onClick={() => setShowFilterModal(true)}
                         >
@@ -162,7 +162,7 @@ const EventReportPage = () => {
                                     {activeFilterCount}
                                 </span>
                             )}
-                        </button>
+                        </button> */}
 
                         <button
                             className="btn btn-outline-success d-flex align-items-center gap-2"

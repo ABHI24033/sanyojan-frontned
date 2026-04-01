@@ -54,7 +54,7 @@ const EventGuestTable = ({
                 {/* Filters */}
                 <div className="d-flex align-items-center gap-3">
                     {/* City Filter */}
-                    <div className="d-flex align-items-center gap-2">
+                    {/* <div className="d-flex align-items-center gap-2">
                         <span className="text-sm text-secondary-light fw-medium">City:</span>
                         <select
                             className="form-select form-select-sm"
@@ -67,7 +67,7 @@ const EventGuestTable = ({
                                 <option key={city} value={city}>{city}</option>
                             ))}
                         </select>
-                    </div>
+                    </div> */}
 
                     <div className="d-flex gap-2">
                         <button className={`btn btn-sm ${filterStatus === '' ? 'btn-primary-600' : 'btn-outline-light text-secondary-light'}`} onClick={() => { setFilterStatus(''); setPage(1); }}>All Status</button>

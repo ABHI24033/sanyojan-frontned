@@ -70,7 +70,7 @@ const EventDetailsPage = () => {
                         </button>
                     ) : <div></div>}
 
-                    <div className="d-flex gap-2">
+                    {/* <div className="d-flex gap-2">
                         {isAuthenticated && (
                             <button
                                 className={`btn ${copied ? 'btn-success' : 'btn-outline-primary'} d-flex align-items-center gap-2`}
@@ -80,7 +80,7 @@ const EventDetailsPage = () => {
                                 {copied ? "Link Copied" : "Share"}
                             </button>
                         )}
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="card border-0 rounded-4 mb-5 bg-transparent">

@@ -75,7 +75,7 @@ const EditNoticeForm = ({ initialData = {}, onSubmitHandler }) => {
 
             <div className="row">
                 <div className="col-md-6">
-                    <label className="form-label fw-bold">Start Date</label>
+                    <label className="form-label fw-bold">Notice Start Date</label>
                     <input
                         type="date"
                         name="startDate"
@@ -86,7 +86,7 @@ const EditNoticeForm = ({ initialData = {}, onSubmitHandler }) => {
                 </div>
 
                 <div className="col-md-6">
-                    <label className="form-label fw-bold">End Date</label>
+                    <label className="form-label fw-bold">Notice End Date</label>
                     <input
                         type="date"
                         name="endDate"
